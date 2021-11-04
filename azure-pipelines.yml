@@ -1,27 +1,12 @@
 trigger:
 - 'importing-from-azure'
 
-parameters:
-- name: env
-  displayName: 'Target env'
-  default: dev
-  values:
-  - dev
-  - test
-  - prod
-- name: LOAD_HOST
-  displayName: Load testing host
-  default: 'https://workplace.alpha.canada.ca'
-  values:
-  - 'https://workplace.alpha.canada.ca'
-  - 'https://gcr2wp-dev.powerappsportals.com'
-  - 'https://uat.workplace-milieudetravail.gc.ca/en-US'
-
 stages:
 - stage: LoadTest
   displayName: LoadTest
   jobs:
-  - job: playwright
+  - job: load-tests
+    timeoutInMinutes: 10
     pool:
       vmImage: 'ubuntu-latest'
       name: highcpu
@@ -48,7 +33,7 @@ stages:
       - task: Npm@1
         inputs:
           command: 'custom'
-          customCommand: 'run test-40x174 account-login/en'
+          customCommand: 'run test-1x500 account-login/en'
         displayName: 'Running playwright tests'
 
 
