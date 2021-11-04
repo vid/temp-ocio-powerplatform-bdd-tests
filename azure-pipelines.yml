@@ -1,0 +1,59 @@
+trigger:
+- 'test-auth-only'
+
+parameters:
+- name: env
+  displayName: 'Target env'
+  default: dev
+  values:
+  - dev
+  - test
+  - prod
+- name: LOAD_HOST
+  displayName: Load testing host
+  default: 'https://workplace.alpha.canada.ca'
+  values:
+  - 'https://workplace.alpha.canada.ca'
+  - 'https://gcr2wp-dev.powerappsportals.com'
+  - 'https://uat.workplace-milieudetravail.gc.ca/en-US'
+
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+
+stages:
+- stage: ConnectivityTest
+  displayName: ConnectivityTest
+  jobs:
+  - job: connectivity
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - bash: |
+          sudo apt-get install -y curl
+        displayName: installCurl
+      - bash: |
+          curl -v $(LOAD_HOST)
+        displayName: curl verbose
+
+  - job: playwright
+    pool:
+      vmImage: 'ubuntu-latest'
+    container:
+      image: mcr.microsoft.com/playwright:focal
+    steps:
+      - checkout: git://jaysonmc/temp-ocio-powerplatform-bdd-tests
+
+      - task: Npm@1
+        inputs:
+          command: 'install'
+        displayName: 'installing dependencies'
+
+      - task: Npm@1
+        inputs:
+          command: 'custom'
+          customCommand: 'run test-2x2'
+        displayName: 'Running playwright tests'
+
+
