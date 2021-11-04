@@ -26,11 +26,22 @@ stages:
             sudo apt install -y nodejs
 
       - task: Bash@3
+        displayName: 'remove locks'
+        inputs:
+          targetType: 'inline'
+          script: |
+            sudo killall apt-get apt
+            sudo rm -rf /var/lib/dpkg/lock*
+            sudo rm -rf /var/lib/apt/lists/lock
+            sudo rm -rf /var/cache/apt/archives/lock
+            sudo dpkg --configure -a
+            sudo apt update
+
+      - task: Bash@3
         displayName: 'sudo npx playwright install-deps'
         inputs:
           targetType: 'inline'
           script: |
-            sudo rm -rf /var/lib/dpkg/lock-frontend
             sudo npx playwright install-deps 
 
       - task: Npm@1
