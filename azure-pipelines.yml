@@ -16,7 +16,8 @@ parameters:
   - 'https://workplace.alpha.canada.ca'
   - 'https://gcr2wp-dev.powerappsportals.com'
   - 'https://uat.workplace-milieudetravail.gc.ca/en-US'
-
+- name: HAIBUN_ENVC
+  displayName: USER_EMAIL and USER_PASSWORD pairs
 
 pool:
   vmImage: 'ubuntu-latest'
