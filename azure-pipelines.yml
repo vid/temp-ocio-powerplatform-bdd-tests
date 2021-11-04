@@ -25,12 +25,20 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
       name: highcpu
-    container:
-      image: mcr.microsoft.com/playwright:focal
+    # container:
+    #   image: mcr.microsoft.com/playwright:focal
       
     steps:
       - checkout: self
 
+      - task: Bash@3
+        inputs:
+          targetType: 'inline'
+          script: |
+            sudo apt install -y curl
+            curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+            sudo apt install -y nodejs
+            
       - task: Npm@1
         inputs:
           command: 'install'
