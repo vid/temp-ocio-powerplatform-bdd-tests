@@ -1,5 +1,5 @@
 trigger:
-- 'importing-from-azure'
+- 'do-load-test'
 
 stages:
 - stage: LoadTest
@@ -41,5 +41,5 @@ stages:
       - task: CmdLine@2
         displayName: 'Running load tests'
         inputs:
-          script: npm run test-1x333 account-login/en
+          script: npm run test-40x250 account-login/en
 
