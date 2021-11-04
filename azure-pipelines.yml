@@ -17,10 +17,6 @@ parameters:
   - 'https://gcr2wp-dev.powerappsportals.com'
   - 'https://uat.workplace-milieudetravail.gc.ca/en-US'
 
-pool:
-  vmImage: 'ubuntu-latest'
-
-
 stages:
 - stage: LoadTest
   displayName: LoadTest
@@ -28,6 +24,7 @@ stages:
   - job: playwright
     pool:
       vmImage: 'ubuntu-latest'
+      name: highcpu
     container:
       image: mcr.microsoft.com/playwright:focal
     steps:
