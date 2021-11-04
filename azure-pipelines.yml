@@ -5,7 +5,7 @@ stages:
 - stage: LoadTest
   displayName: LoadTest
   jobs:
-  - job: load-tests
+  - job: load_tests
     timeoutInMinutes: 10
     pool:
       vmImage: 'ubuntu-latest'
