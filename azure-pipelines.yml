@@ -33,7 +33,7 @@ stages:
       - task: Bash@3
         inputs:
           targetType: 'inline'
-          script: 'sudo apt install -y node npm'      
+          script: 'sudo apt install -y nodejs npm'      
 
       - task: Npm@1
         inputs:
