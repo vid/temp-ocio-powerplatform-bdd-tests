@@ -35,6 +35,9 @@ stages:
       - bash: |
           curl -v $(LOAD_HOST)
         displayName: curl verbose
+      - bash: |
+          cat /proc/cpuinfo
+        displayName: cpuinfo
 
   - job: playwright
     pool:
@@ -52,7 +55,7 @@ stages:
       - task: Npm@1
         inputs:
           command: 'custom'
-          customCommand: 'run test-2x2'
+          customCommand: 'run test-40x174'
         displayName: 'Running playwright tests'
 
 
