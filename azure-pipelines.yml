@@ -1,5 +1,8 @@
 trigger:
-- 'do-load-test'
+  batch: true
+  branches:
+    include:
+    - 'do-load-test'
 
 stages:
 - stage: LoadTest
