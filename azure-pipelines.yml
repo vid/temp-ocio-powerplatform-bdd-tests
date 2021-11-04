@@ -30,7 +30,7 @@ stages:
         inputs:
           targetType: 'inline'
           script: |
-            npx playwright install-deps 
+            sudo npx playwright install-deps 
 
       - task: Npm@1
         inputs:
