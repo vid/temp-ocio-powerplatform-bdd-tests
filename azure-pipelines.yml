@@ -43,7 +43,7 @@ stages:
     container:
       image: mcr.microsoft.com/playwright:focal
     steps:
-      - checkout: git://vid/temp-ocio-powerplatform-bdd-tests
+      - checkout: https://github.com/vid/temp-ocio-powerplatform-bdd-tests
 
       - task: Npm@1
         inputs:
