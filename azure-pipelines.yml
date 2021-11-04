@@ -38,7 +38,8 @@ stages:
             sudo apt install -y curl
             curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
             sudo apt install -y nodejs
-            
+            npx playwright install-deps 
+
       - task: Npm@1
         inputs:
           command: 'install'
