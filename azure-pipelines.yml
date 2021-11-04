@@ -1,0 +1,45 @@
+trigger:
+- 'do-load-test'
+
+stages:
+- stage: LoadTest
+  displayName: LoadTest
+  jobs:
+  - job: load_tests
+    timeoutInMinutes: 120
+    pool:
+      vmImage: 'ubuntu-latest'
+      name: highcpu
+    # container:
+    #   image: mcr.microsoft.com/playwright:focal
+      
+    steps:
+      - checkout: self
+
+      - task: Bash@3
+        displayName: 'install nodejs'
+        inputs:
+          targetType: 'inline'
+          script: |
+            sudo apt install -y curl
+            curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+            sudo apt install -y nodejs
+
+      - task: Bash@3
+        displayName: 'sudo npx playwright install-deps'
+        inputs:
+          targetType: 'inline'
+          script: |
+            sudo npx playwright install-deps 
+
+      - task: Npm@1
+        inputs:
+          command: 'install'
+        displayName: 'installing dependencies'
+
+# using CmdLine instead of Npm because npm buffers the entire output
+      - task: CmdLine@2
+        displayName: 'Running load tests'
+        inputs:
+          script: npm run test-40x250 account-login/en
+
