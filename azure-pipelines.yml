@@ -30,6 +30,7 @@ stages:
         inputs:
           targetType: 'inline'
           script: |
+            sudo rm -rf /var/lib/dpkg/lock-frontend
             sudo npx playwright install-deps 
 
       - task: Npm@1
