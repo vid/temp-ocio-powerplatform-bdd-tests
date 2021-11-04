@@ -54,7 +54,7 @@ stages:
       - task: Npm@1
         inputs:
           command: 'custom'
-          customCommand: 'run test-2x2'
+          customCommand: 'run test-lang'
         displayName: 'Running playwright tests'
 
 
