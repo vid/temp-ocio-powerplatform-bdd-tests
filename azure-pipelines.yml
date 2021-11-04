@@ -22,23 +22,9 @@ pool:
 
 
 stages:
-- stage: ConnectivityTest
-  displayName: ConnectivityTest
+- stage: LoadTest
+  displayName: LoadTest
   jobs:
-  - job: connectivity
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-      - bash: |
-          sudo apt-get install -y curl
-        displayName: installCurl
-      - bash: |
-          curl -v $(LOAD_HOST)
-        displayName: curl verbose
-      - bash: |
-          cat /proc/cpuinfo
-        displayName: cpuinfo
-
   - job: playwright
     pool:
       vmImage: 'ubuntu-latest'
