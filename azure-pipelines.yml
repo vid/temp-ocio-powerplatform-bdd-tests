@@ -25,8 +25,8 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
       name: highcpu
-    container:
-      image: mcr.microsoft.com/playwright:focal
+    # container:
+    #   image: mcr.microsoft.com/playwright:focal
     steps:
       - checkout: self
 
