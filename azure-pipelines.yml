@@ -26,7 +26,7 @@ stages:
             sudo apt install -y nodejs
 
       - task: Bash@3
-        displayName: 'npx playwright install-deps'
+        displayName: 'sudo npx playwright install-deps'
         inputs:
           targetType: 'inline'
           script: |
