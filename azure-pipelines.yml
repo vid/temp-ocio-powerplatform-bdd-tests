@@ -6,7 +6,7 @@ stages:
   displayName: LoadTest
   jobs:
   - job: load_tests
-    timeoutInMinutes: 10
+    timeoutInMinutes: 120
     pool:
       vmImage: 'ubuntu-latest'
       name: highcpu
@@ -30,10 +30,9 @@ stages:
           command: 'install'
         displayName: 'installing dependencies'
 
-      - task: Npm@1
+# using CmdLine instead of Npm because npm buffers the entire output
+      - task: CmdLine@2
+        displayName: 'Running load tests tests'
         inputs:
-          command: 'custom'
-          customCommand: 'run test-1x500 account-login/en'
-        displayName: 'Running playwright tests'
-
+          script: run test-1x500 account-login/en
 
