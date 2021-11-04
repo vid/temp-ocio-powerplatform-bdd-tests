@@ -1,5 +1,5 @@
 trigger:
-- 'test-auth-only'
+- 'importing-from-azure'
 
 parameters:
 - name: env
@@ -16,7 +16,6 @@ parameters:
   - 'https://workplace.alpha.canada.ca'
   - 'https://gcr2wp-dev.powerappsportals.com'
   - 'https://uat.workplace-milieudetravail.gc.ca/en-US'
-
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -36,6 +35,9 @@ stages:
       - bash: |
           curl -v $(LOAD_HOST)
         displayName: curl verbose
+      - bash: |
+          cat /proc/cpuinfo
+        displayName: cpuinfo
 
   - job: playwright
     pool:
@@ -43,7 +45,7 @@ stages:
     container:
       image: mcr.microsoft.com/playwright:focal
     steps:
-      - checkout: git://jaysonmc/temp-ocio-powerplatform-bdd-tests
+      - checkout: self
 
       - task: Npm@1
         inputs:
