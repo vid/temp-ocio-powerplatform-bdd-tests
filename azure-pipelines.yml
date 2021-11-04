@@ -41,5 +41,5 @@ stages:
       - task: CmdLine@2
         displayName: 'Running load tests'
         inputs:
-          script: npm run test-1x500 account-login/en
+          script: npm run test-1x250 account-login/en
 
