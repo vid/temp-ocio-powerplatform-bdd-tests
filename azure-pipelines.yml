@@ -55,7 +55,7 @@ stages:
       - task: Npm@1
         inputs:
           command: 'custom'
-          customCommand: 'run test-40x174'
+          customCommand: 'run test-2x250'
         displayName: 'Running playwright tests'
 
 
