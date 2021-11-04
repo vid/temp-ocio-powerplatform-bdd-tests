@@ -17,12 +17,19 @@ stages:
       - checkout: self
 
       - task: Bash@3
+        displayName: 'install nodejs'
         inputs:
           targetType: 'inline'
           script: |
             sudo apt install -y curl
             curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
             sudo apt install -y nodejs
+
+      - task: Bash@3
+        displayName: 'npx playwright install-deps'
+        inputs:
+          targetType: 'inline'
+          script: |
             npx playwright install-deps 
 
       - task: Npm@1
@@ -32,7 +39,7 @@ stages:
 
 # using CmdLine instead of Npm because npm buffers the entire output
       - task: CmdLine@2
-        displayName: 'Running load tests tests'
+        displayName: 'Running load tests'
         inputs:
-          script: run test-1x500 account-login/en
+          script: npm run test-1x500 account-login/en
 
