@@ -22,11 +22,11 @@
   "author": "vid",
   "license": "ISC",
   "dependencies": {
-    "@haibun/cli": "^1.0.3",
-    "@haibun/core": "^1.0.7",
-    "@haibun/domain-webpage": "^1.0.1",
-    "@haibun/out-xunit": "^1.0.0",
-    "@haibun/web-playwright": "^1.0.5",
-    "@haibun/web-server-express": "^1.0.0"
+    "@haibun/cli": "1.1",
+    "@haibun/core": "1.1",
+    "@haibun/domain-webpage": "1.1",
+    "@haibun/out-xunit": "1.1",
+    "@haibun/web-playwright": "1.1",
+    "@haibun/web-server-express": "1.1"
   }
 }
