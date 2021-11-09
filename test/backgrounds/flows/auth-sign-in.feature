@@ -8,4 +8,4 @@
   When I input {USER_EMAIL} for //*[@id="email"]
   When I input {USER_PASSWORD} for //*[@id="password"]
   And I click the button Sign in
-  Then I wait for the user menu
+  Then I wait for //*[@class="username"]
