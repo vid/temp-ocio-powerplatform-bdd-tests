@@ -4,4 +4,3 @@ Set sign in password to //*[@id="password"]
 Set Sign in to //*[@id="next"]
 Set UserFullName to //*[@class="username"]
 Set Language Toggle to //*[@class="drop_language"]
-Set the user menu to .username
