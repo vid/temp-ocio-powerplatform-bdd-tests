@@ -36,6 +36,7 @@ stages:
           script: |
             # no container fixes
             sudo chown -R 1001:1001 "/home/AzDevOps/.npm"
+            sudo ls -lat /var/lib/dpkg
             sudo rm -rf /var/lib/dpkg/lock*
             # end no container fixes
             sudo npx playwright install-deps 
