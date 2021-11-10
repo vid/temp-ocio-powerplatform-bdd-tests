@@ -21,6 +21,7 @@ stages:
         inputs:
           targetType: 'inline'
           script: |
+            sudo chown -R 1001:1001 "/home/AzDevOps/.npm"
             sudo rm -rf /var/lib/dpkg/lock-frontend
             sudo rm -rf /var/lib/dpkg/lock
             sudo apt install -y curl
@@ -32,8 +33,8 @@ stages:
         inputs:
           targetType: 'inline'
           script: |
-            sudo chown -R 1001:1001 "/home/AzDevOps/.npm"
             sudo npx playwright install-deps 
+            sudo chown -R 1001:1001 "/home/AzDevOps/.npm"
 
       - task: Npm@1
         inputs:
