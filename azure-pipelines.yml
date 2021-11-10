@@ -23,8 +23,7 @@ stages:
           script: |
             # no container fixes
             sudo chown -R 1001:1001 "/home/AzDevOps/.npm"
-            sudo rm -rf /var/lib/dpkg/lock-frontend
-            sudo rm -rf /var/lib/dpkg/lock
+            sudo rm -rf /var/lib/dpkg/lock*
             # end no container fixes
             sudo apt install -y curl
             curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
@@ -37,8 +36,7 @@ stages:
           script: |
             # no container fixes
             sudo chown -R 1001:1001 "/home/AzDevOps/.npm"
-            sudo rm -rf /var/lib/dpkg/lock-frontend
-            sudo rm -rf /var/lib/dpkg/lock
+            sudo rm -rf /var/lib/dpkg/lock*
             # end no container fixes
             sudo npx playwright install-deps 
 
