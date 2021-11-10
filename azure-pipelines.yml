@@ -21,9 +21,11 @@ stages:
         inputs:
           targetType: 'inline'
           script: |
+          # no container fixes
             sudo chown -R 1001:1001 "/home/AzDevOps/.npm"
             sudo rm -rf /var/lib/dpkg/lock-frontend
             sudo rm -rf /var/lib/dpkg/lock
+          # end no container fixes
             sudo apt install -y curl
             curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
             sudo apt install -y nodejs
@@ -33,8 +35,12 @@ stages:
         inputs:
           targetType: 'inline'
           script: |
-            sudo npx playwright install-deps 
+          # no container fixes
             sudo chown -R 1001:1001 "/home/AzDevOps/.npm"
+            sudo rm -rf /var/lib/dpkg/lock-frontend
+            sudo rm -rf /var/lib/dpkg/lock
+          # end no container fixes
+            sudo npx playwright install-deps 
 
       - task: Npm@1
         inputs:
