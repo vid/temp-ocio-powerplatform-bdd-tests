@@ -12,5 +12,5 @@ Set SignOutMenu to :text("Sign out")
 Set AccountProfile to https://workplace.alpha.canada.ca/en/contactdetails/
 Set AccountVaccineAttestation to https://workplace.alpha.canada.ca/en/va-privacy/
 
-Set AccountMenuProfile to .home-btn:near(:text("My profile"), 100)
+Set AccountMenuProfile to :text('My Profile') >> visible=true
 Set AccountMenuVaccineAttestation to .home-btn:near(:text("Vaccine attestation"), 100)
