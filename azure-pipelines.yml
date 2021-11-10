@@ -30,6 +30,7 @@ stages:
         inputs:
           targetType: 'inline'
           script: |
+            sudo chown -R 1001:1001 "/home/AzDevOps/.npm"
             sudo npx playwright install-deps 
 
       - task: Npm@1
