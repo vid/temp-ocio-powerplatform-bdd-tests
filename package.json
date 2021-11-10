@@ -26,7 +26,7 @@
   "license": "ISC",
   "dependencies": {
     "@haibun/cli": "1.1",
-    "@haibun/core": "1.1",
+    "@haibun/core": "^1.1.1",
     "@haibun/domain-webpage": "1.1",
     "@haibun/out-xunit": "1.1",
     "@haibun/web-playwright": "1.1",
