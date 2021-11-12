@@ -3,6 +3,7 @@
   "steppers": [
     "~@haibun/domain-webpage/build/domain-webpage",
     "~@haibun/web-playwright/build/web-playwright",
+    "~@haibun/out-review/build/out-review",
     "vars",
     "credentials",
     "haibun"
