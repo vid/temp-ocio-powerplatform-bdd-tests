@@ -10,36 +10,38 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
       name: highcpu
-    # container:
-    #   image: mcr.microsoft.com/playwright:focal
+    container:
+      image: mcr.microsoft.com/playwright:focal
       
     steps:
       - checkout: self
 
-      - task: Bash@3
-        displayName: 'install nodejs'
-        inputs:
-          targetType: 'inline'
-          script: |
-            # no container fixes
-            sudo chown -R 1001:1001 "/home/AzDevOps/.npm"
-            sudo rm -rf /var/lib/dpkg/lock*
-            # end no container fixes
-            sudo apt install -y curl libwoff1 libopus0 libwebp6 libwebpdemux2 libenchant1c2a libgudev-1.0-0 libsecret-1-0 libhyphen0 libgdk-pixbuf2.0-0 libegl1 libgles2 libevent-2.1-6 libnotify4 libxslt1.1 libvpx5 gstreamer1.0-gl gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad libgbm1 xvfb
-            curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-            sudo apt install -y nodejs
+      # - task: Bash@3
+      #   displayName: 'install nodejs'
+      #   inputs:
+      #     targetType: 'inline'
+      #     script: |
+      #       sudo apt update
+      #       sudo apt install -y docker-ce docker-ce-cli
+      #       # no container fixes
+      #       # sudo chown -R 1001:1001 "/home/AzDevOps/.npm"
+      #       # sudo rm -rf /var/lib/dpkg/lock*
+      #       # # end no container fixes
+      #       # sudo apt install -y curl libwoff1 libopus0 libwebp6 libwebpdemux2 libenchant1c2a libgudev-1.0-0 libsecret-1-0 libhyphen0 libgdk-pixbuf2.0-0 libegl1 libgles2 libevent-2.1-6 libnotify4 libxslt1.1 libvpx5 gstreamer1.0-gl gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad libgbm1 xvfb
+      #       # curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+      #       # sudo apt install -y nodejs
 
-      - task: Bash@3
-        displayName: 'sudo npx playwright install-deps'
-        inputs:
-          targetType: 'inline'
-          script: |
-            # no container fixes
-            sudo chown -R 1001:1001 "/home/AzDevOps/.npm"
-            sudo rm -rf /var/lib/dpkg/lock*
-            sudo ls -lat /var/lib/dpkg/
-            # end no container fixes
-            sudo npx playwright install-deps 
+      # - task: Bash@3
+      #   displayName: 'sudo npx playwright install-deps'
+      #   inputs:
+      #     targetType: 'inline'
+      #     script: |
+      #       # no container fixes
+      #       sudo chown -R 1001:1001 "/home/AzDevOps/.npm"
+      #       sudo rm -rf /var/lib/dpkg/lock*
+      #       sudo ls -lat /var/lib/dpkg/
+      #       # end no container fixes
+      #       sudo npx playwright install-deps 
 
       - task: Npm@1
         inputs:
