@@ -1,4 +1,4 @@
 
-Feature: Account Profile (en)
+Feature: Language (en)
 
 Backgrounds: service/lang/en, flows/lang
