@@ -1,5 +1,5 @@
 trigger:
-- 'do-e2e-test'
+- 'for-e2e-pipeline'
 
 resources:
   repositories:
@@ -7,7 +7,7 @@ resources:
     type: github
     endpoint: jaysonmc
     name: jaysonmc/temp-ocio-powerplatform-bdd-tests
-    ref: test-regressions-in-pipeline
+    ref: for-e2e-pipeline
 
 
 stages:
