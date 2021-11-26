@@ -32,5 +32,5 @@ stages:
       - task: CmdLine@2
         displayName: 'Running e2e tests'
         inputs:
-          script: npm run test-regressions
+          script: npm run test-pipeline
 
