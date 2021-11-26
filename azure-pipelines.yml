@@ -13,7 +13,7 @@ stages:
       image: mcr.microsoft.com/playwright:focal
       
     steps:
-      - checkout: git://github.com/jaysonmc/temp-ocio-powerplatform-bdd-tests@refs/heads/e2e-pipeline
+      - checkout: git@github.com:jaysonmc/temp-ocio-powerplatform-bdd-tests.git@refs/heads/e2e-pipeline
       - task: Npm@1
         inputs:
           command: 'install'
