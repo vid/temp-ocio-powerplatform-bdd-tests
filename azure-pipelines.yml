@@ -1,6 +1,15 @@
 trigger:
 - 'do-e2e-test'
 
+resources:
+  repositories:
+  - repository: e2etest # The name used to reference this repository in the checkout step
+    type: github
+    endpoint: jaysonmc
+    name: jaysonmc/temp-ocio-powerplatform-bdd-tests
+    ref: e2e-pipeline
+
+
 stages:
 - stage: E2ETest
   displayName: E2ETest
@@ -13,7 +22,7 @@ stages:
       image: mcr.microsoft.com/playwright:focal
       
     steps:
-      - checkout: git@github.com:jaysonmc/temp-ocio-powerplatform-bdd-tests.git@refs/heads/e2e-pipeline
+      - checkout: e2etest
       - task: Npm@1
         inputs:
           command: 'install'
