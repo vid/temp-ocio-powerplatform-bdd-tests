@@ -1,11 +1,11 @@
 trigger:
-- 'do-load-test'
+- 'do-e2e-test'
 
 stages:
-- stage: LoadTest
-  displayName: LoadTest
+- stage: E2ETest
+  displayName: E2ETest
   jobs:
-  - job: load_tests
+  - job: e2e_tests
     timeoutInMinutes: 120
     pool:
       vmImage: 'ubuntu-latest'
@@ -21,7 +21,7 @@ stages:
 
 # using CmdLine instead of Npm because npm buffers the entire output
       - task: CmdLine@2
-        displayName: 'Running load tests'
+        displayName: 'Running e2e tests'
         inputs:
           script: npm run test-regressions
 
