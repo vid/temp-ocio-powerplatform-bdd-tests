@@ -1,4 +1,4 @@
-Set EmailLogin URI to https://uat.gcpass-b2c.gc.ca/
+Set EmailLogin URI to https://digitalgc.b2clogin.com
 Set sign in email to //*[@id="email"]
 Set sign in password to //*[@id="password"]
 Set Sign in to //*[@id="next"]
