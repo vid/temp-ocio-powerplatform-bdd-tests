@@ -9,7 +9,7 @@ stages:
     timeoutInMinutes: 120
     pool:
       vmImage: 'ubuntu-latest'
-      name: highcpu
+#      name: highcpu
     container:
       image: mcr.microsoft.com/playwright:focal
       
@@ -52,5 +52,5 @@ stages:
       - task: CmdLine@2
         displayName: 'Running load tests'
         inputs:
-          script: npm run test-313x32 account-login/en
+          script: npm run test-2x2
 
