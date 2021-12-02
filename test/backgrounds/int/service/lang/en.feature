@@ -5,7 +5,7 @@ Set Get Started to :text("Get started")
 Set Language Name to "English"
 Set Language Selected to //*[@data-code="en"]
 Set SignInMenu to :text("Sign in")
-Set Email Login to :text("Testing Only")
+Set Email Login to :text("Testing Purposes Only")
 Set AccountHome to https://workplace.alpha.canada.ca/en/index/
 Set SignOutMenu to :text("Sign out")
 
