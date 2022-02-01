@@ -14,11 +14,9 @@ variables:
 trigger:
 - test-e2e
 
-pool:
-  vmImage: ubuntu-
   jobs:
   - job: e2etests
-    condition: eq(1,2)
+#    condition: eq(1,2)
     #dependsOn: Deployment
     #condition: succeeded()
     timeoutInMinutes: 120
@@ -26,6 +24,7 @@ pool:
         vmImage: 'ubuntu-latest'
     container:
         image: mcr.microsoft.com/playwright:focal 
+
     steps:
         - checkout: e2etest     
         - task: Npm@1
@@ -33,12 +32,21 @@ pool:
             command: 'install'
           displayName: 'installing dependencies'
 
-  # using CmdLine instead of Npm because npm buffers the entire output
-        - task: CmdLine@2
+        - task: CmdLine@2  # using CmdLine instead of Npm because npm buffers the entire output
           displayName: 'Running e2e tests'
+          continueOnError: true
           inputs:
             script: npm run test-pipeline
 
-        - publish: '$(Build.SourcesDirectory)/capture'
-          artifact: e2e-capture
-          displayName: Publish e2e artifact            
+  - job: publish_e2e_artifacts
+    dependsonOn: e2etests
+
+    - publish: '$(Build.SourcesDirectory)/capture'
+      artifact: e2e_capture
+      displayName: Publish e2e artifact            
+
+  - job: exit_if_failed
+    dependsonOn: publish_e2e_artifacts
+    condition: eq(dependencies.e2etests.result,'Succeeded')
+    steps:
+    - script: echo e2e tests passed, continuing.
